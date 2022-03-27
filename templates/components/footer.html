@@ -1,0 +1,28 @@
+{% load static %}
+<footer class="footer py-5 bg-gradient-dark position-relative overflow-hidden">
+    <img src="{% static 'img/shapes/waves-white.svg'%}" alt="pattern-lines" class="position-absolute start-0 top-0 w-100 opacity-6">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 me-auto mb-lg-0 mb-4 text-lg-start text-center">
+          <h6 class="text-white font-weight-bolder text-uppercase mb-lg-4 mb-3">Student Stay</h6>
+          <ul class="nav flex-row ms-n3 justify-content-lg-start justify-content-center mb-4 mt-sm-0">
+            <li class="nav-item">
+              <a class="nav-link text-white opacity-8" href="{% url 'home-page' %}">
+                Home
+              </a>
+            </li>
+          </ul>
+          <p class="text-sm text-white opacity-8 mb-0">
+            Copyright © <script>
+              document.write(new Date().getFullYear())
+            </script> Soft by Paulo Fernandes.
+          </p>
+        </div>
+        <div class="col-lg-6 ms-auto text-lg-end text-center">
+          <p class="mb-5 text-lg text-white font-weight-bold">
+            Find affordable student properties for you.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>

@@ -1,7 +1,57 @@
-hello world
+{% extends 'base.html' %}
+{% load static %}
 
-{% for property in properties %}
-    <div>
-    {{ property.name }}
-    </div>
-{% endfor %}
+{% block content %}
+    <!-- START Blogs w/ 4 cards w/ image & text & link -->
+    <section class="py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="mb-5">Available Student Properties:</h3>
+                </div>
+            </div>
+            <div class="row">
+            {% if properties %}
+                {% for property in properties %}
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card card-plain card-blog">
+                            <div class="card-image border-radius-lg position-relative">
+                                <a href="/property/{{ property.id }}/">
+                                    <img alt="property image" class="w-100 border-radius-lg move-on-hover shadow"
+                                         src="{{ property.get_display_image_url }}">
+                                </a>
+                            </div>
+                            <div class="card-body px-0">
+                                <h5>
+                                    <a href="/property/{{ property.id }}/"
+                                       class="text-dark font-weight-bold">{{ property.name }}</a>
+                                </h5>
+                                <a href="https://www.google.com/maps/@{{ property.longitude }},{{ property.latitude }},15z"
+                                   target="_blank">Map</a>
+                                <p>R{{ property.price }}/pm</p>
+                                <p>
+                                    {{ property.description }}
+                                </p>
+                                <p>
+                                    Bedroom: {{ property.bedroom_type }}
+                                    <br>
+                                    Bathroom: {{ property.bathroom_type }}
+                                    <br>
+                                    Kitchen: {{ property.kitchen_type }}
+                                    <br>
+                                    Campus: {{ property.campus }}
+                                </p>
+                                <a href="/property/{{ property.id }}/" class="text-info icon-move-right">View Property
+                                    <i class="fas fa-arrow-right text-sm"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                No properties found for {{ campus }}
+            {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock content %}

@@ -1,0 +1,72 @@
+{% load static %}
+<!-- Navbar Light -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home-page' %}"
+           rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom">
+            Student Stay
+        </a>
+        <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
+                aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon mt-2">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </span>
+        </button>
+        <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0 ms-lg-12 ps-lg-5" id="navigation">
+            <ul class="navbar-nav navbar-nav-hover w-100">
+                {% if user.is_authenticated %}
+
+                    <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-5">
+                        <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
+                           id="dropdownMenuPages5" data-bs-toggle="dropdown" aria-expanded="false">
+                            Campuses
+                            <img src="{% static 'img/down-arrow-dark.svg' %}" alt="down-arrow" class="arrow ms-1">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-animation dropdown-md p-3 border-radius-lg mt-0 mt-lg-3"
+                             aria-labelledby="dropdownMenuPages5">
+                            <div class="d-none d-lg-block">
+                                <a href="{% url 'home-page' %}?campus=JHB" class="dropdown-item border-radius-md">
+                                    <span class="ps-3">Johannesburg</span>
+                                </a>
+                                <a href="{% url 'home-page' %}?campus=DBN" class="dropdown-item border-radius-md">
+                                    <span class="ps-3">Durban</span>
+                                </a>
+                                <a href="{% url 'home-page' %}?campus=CPT" class="dropdown-item border-radius-md">
+                                    <span class="ps-3">Cape Town</span>
+                                </a>
+                            </div>
+                            <div class="d-lg-none">
+                                <a href="{% url 'home-page' %}?campus=JHB" class="dropdown-item border-radius-md">
+                                    <span class="ps-3">Johannesburg</span>
+                                </a>
+                                <a href="{% url 'home-page' %}?campus=DBN" class="dropdown-item border-radius-md">
+                                    <span class="ps-3">Durban</span>
+                                </a>
+                                <a href="{% url 'home-page' %}?campus=CPT" class="dropdown-item border-radius-md">
+                                    <span class="ps-3">Cape Town</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item ms-lg-auto">
+                        <a href="{% url 'account_logout' %}" class="d-inline text-sm z-index-1 font-bold"
+                           data-bs-toggle="tooltip"
+                           data-bs-placement="bottom" title="logout">Logout</a>
+                    </li>
+                    {% if user.is_superuser %}
+
+                        <li class="nav-item ms-lg-auto">
+                            <a href="{% url 'admin:index' %}" class="d-inline text-sm z-index-1 font-bold"
+                               data-bs-toggle="tooltip"
+                               data-bs-placement="bottom" title="admin">Admin</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- End Navbar -->

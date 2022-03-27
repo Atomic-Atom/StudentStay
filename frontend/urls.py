@@ -1,7 +1,7 @@
+from frontend import views
 from django.urls import path
-from frontend.views import IndexView, AboutUsView
 
 urlpatterns = [
-    path('', IndexView.as_view()),
-    path('about-us/', AboutUsView.as_view()),
+    path('', views.IndexView.as_view(), name='home-page'),
+    path('property/<int:pk>/', views.PropertyView.as_view(), name='property-view'),
 ]

@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 
     # Local App
-    'accounts',
+    'core_accounts',
     'properties',
     'frontend',
 ]
@@ -66,7 +66,10 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [
+            BASE_DIR / 'templates',
+            BASE_DIR / 'example_template',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -158,3 +161,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #         }
 #     }
 # }
+
+ACCOUNT_FORMS = {
+    'login': 'frontend.forms.MyLoginForm',
+    'signup': 'frontend.forms.MySignupForm'
+}
+LOGIN_REDIRECT_URL = "/"
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_LOGOUT_ON_GET = True
